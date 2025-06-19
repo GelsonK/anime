@@ -1,0 +1,27 @@
+
+
+
+
+body{
+    color: aliceblue;
+}
+.pai{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    & img{
+        width: 170px;
+    }
+}
+
+.unico{
+    width: 200px;
+    text-align: center;
+    margin: 10px 5px;
+
+    & p{
+        font-size: 19px;
+        font-weight: 700;
+    }
+}

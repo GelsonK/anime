@@ -1,0 +1,52 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+.cabeca{
+    background-color: rgb(87, 1, 1);
+    color: aliceblue;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & h1{
+        margin-left: 20px;
+    }
+    
+}
+
+button{
+    margin: 40px;
+    padding: 10px;
+    font-size: 17px;
+    background-color: blue;
+    color: aliceblue;
+    font-weight: 700;
+}
+.pesquisa{
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    & button{
+        padding: 3px;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        width: 80px;
+        margin-left: 7px;
+}
+& input{
+      padding: 3px;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        font-weight: 700;
+}
+}
