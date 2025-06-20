@@ -7,7 +7,7 @@ function Logo() {
         <>
 
             <div className="rotar">
-                <h3>Loand ...</h3>
+                <h3>Loand...</h3>
 
             </div>
         </>
