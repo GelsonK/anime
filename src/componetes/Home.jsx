@@ -11,34 +11,34 @@ import Logo from './animation'
 
 
 function Home() {
-      
-    var [caregar , setCaregar] = useState(true)
+
+    var [caregar, setCaregar] = useState(true)
 
     const item = useRef(null)
 
-    let [sms , setSms] = useState()
-    
-    
+    let [sms, setSms] = useState()
+
+
     var [dados, setDados] = useState([])
-    
-    
+
+
     var [pagina, setPagina] = useState(1)
 
     let v = localStorage.getItem('valor')
 
-    if(pagina > localStorage.getItem('valor')){
-        
+    if (pagina > localStorage.getItem('valor')) {
 
-        localStorage.setItem('valor', Number(v)+1)
+
+        localStorage.setItem('valor', Number(v) + 1)
 
     }
-    else if(pagina < localStorage.getItem('valor')){
+    else if (pagina < localStorage.getItem('valor')) {
 
         pagina = Number(v)
     }
 
 
-    
+
 
 
 
@@ -64,7 +64,7 @@ function Home() {
 
     function contar() {
 
-        setPagina(pagina = pagina+1)
+        setPagina(pagina = pagina + 1)
 
 
     }
@@ -79,7 +79,7 @@ function Home() {
 
     async function ss() {
 
-              setCaregar(true)
+        setCaregar(true)
 
         await item.current.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -88,18 +88,18 @@ function Home() {
             await axios.get(`https://api.jikan.moe/v4/anime?limit=${fim}&page=${localStorage.getItem('valor')}`)
                 .then(resposta => {
                     setDados(resposta.data.data)
-                    
-                    
+
+
                 })
         }
         catch {
-            
-            setSms(sms="Sem coneccao a internet")
-            
-                
-            localStorage.setItem("valor",1)
+
+            setSms(sms = "Sem coneccao a internet")
+
+
+            localStorage.setItem("valor", 1)
         }
-        finally{
+        finally {
 
             setCaregar(false)
         }
@@ -111,15 +111,15 @@ function Home() {
     useEffect(() => {
 
         ss()
-        
+
     }, []);
 
-           
+
 
     return (
         <>
             <Navbar />
-            
+
             <main className="main" ref={item}>
 
 
@@ -127,7 +127,7 @@ function Home() {
 
 
 
-                  
+
 
                     <div className='bb'>
 
@@ -138,64 +138,64 @@ function Home() {
 
                         {
                             dados ? (
-                            
-                            dados.map(anime => (
-                                
-                                    
+
+                                dados.map(anime => (
+
+
                                     <div key={anime.mal_id} className='animes' >
 
-                                    <img src={anime.images.webp.large_image_url} onClick={() => {
-                                        
-                                        sobre(anime.mal_id)
-                                    }} alt='Erro' />
+                                        <img src={anime.images.webp.large_image_url} onClick={() => {
 
-                                    <p>{anime.title}</p>
+                                            sobre(anime.mal_id)
+                                        }} alt='Erro' />
 
-                                    <div>
-                                        <button>{anime.rating}</button>
+                                        <p>{anime.title}</p>
+
+                                        <div>
+                                            <button>{anime.rating}</button>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                ))
 
-                            ))
-                            
-                            
-                        ) : ( <Logo/>)
-                            
+
+                            ) : (<Logo />)
+
                         }
-                        
-                        
-                        </div>
 
-                        <p id='sms'>{sms}</p>
 
-                        
-                        <div className='pp'>
+                    </div>
+
+                    <p id='sms'>{sms}</p>
+
+
+                    <div className='pp'>
 
                         <button onClick={() => {
-                            
+
                             voltar()
                             ss()
-                            
+
                         }}>Back</button>
 
 
                         <h2>{localStorage.getItem('valor')}</h2>
                         <button onClick={() => {
-                            
+
                             contar()
                             ss()
                         }}>Next</button>
                     </div>
                 </div>
-                
-                
-                
-                
-                </main>
-                
-                </>
-            )
+
+
+
+
+            </main>
+
+        </>
+    )
 }
 
 
